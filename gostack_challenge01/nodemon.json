@@ -1,0 +1,8 @@
+{
+  "ignore": ["__tests__"],
+  "watch": ["src"],
+  "ext": "js",
+  "execMap": {
+    "ts": "nodemon src/server.js"
+  }
+}
