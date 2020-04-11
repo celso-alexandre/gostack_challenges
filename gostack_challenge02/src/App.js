@@ -19,19 +19,20 @@ function App() {
   async function handleAddRepository(e) {
     e.preventDefault();
 
-    setTechs(techs.replace(', ', ','));
-    const techsArray = techs.split(',');
+    // setTechs(techs.replace(', ', ','));
+    // const techsArray = techs.split(',');
 
     const data = {
       title,
       url,
-      techs: techsArray,
+      // techs: techsArray,
+      techs,
     };
 
     try {
-      const newRepo = await api.post('repositories', data);
+      const { data: newRepo } = await api.post('repositories', data);
 
-      setRepositories({ ...newRepo });
+      setRepositories([...repositories, newRepo]);
     } catch (err) {
       // eslint-disable-next-line no-alert
       alert(err);
@@ -51,7 +52,7 @@ function App() {
 
   return (
     <div>
-      <ul data-testid='reLinkpository-list'>
+      <ul data-testid='repository-list'>
         {repositories.map((repo) => (
           <li key={repo.id}>
             <a target='_blank' rel='noopener noreferrer' href={repo.url}>
@@ -61,7 +62,7 @@ function App() {
             <ol>
               &nbsp;Techs:&nbsp;
               {repo.techs.map((tech) => (
-                <>{tech}&nbsp;</>
+                <strong key={tech}>{tech}&nbsp;</strong>
               ))}
             </ol>
 
