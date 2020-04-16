@@ -13,8 +13,15 @@ const repositories = [
   {
     id: 'cf3f743a-b73b-4db7-b5f9-9736eb423d2f',
     title: 'Challenge #1 on RocketSeat GoStack Bootcamp',
-    url: 'https://github.com/celso-alexandre/gostack_desafio01',
+    url: 'https://github.com/celso-alexandre/gostack_challanges/gostack_challange01',
     techs: ['Node.js'],
+    likes: 0,
+  },
+  {
+    id: '96ca6605-206b-4e62-9824-92ff1ee3458a',
+    title: 'Challenge #2 on RocketSeat GoStack Bootcamp',
+    url: 'https://github.com/celso-alexandre/gostack_challanges/gostack_challange02',
+    techs: ['Node.js', 'ReactJS'],
     likes: 0,
   },
 ];
@@ -38,6 +45,7 @@ const validateNewRepository = (req, res, next) => {
 
 app.get('/repositories', (req, res) => {
   return res.json(repositories);
+  console.log(respositories);
 });
 
 app.post('/repositories', validateNewRepository, (req, res) => {
@@ -54,6 +62,7 @@ app.post('/repositories', validateNewRepository, (req, res) => {
   repositories.push(newRepo);
 
   return res.json(newRepo);
+  console.log(repositories);
 });
 
 app.put('/repositories/:id', (req, res) => {
@@ -75,8 +84,10 @@ app.put('/repositories/:id', (req, res) => {
 
   if (!updatedRepo) {
     return res.status(400).json({ error: 'Repository not found' });
+    console.warn('Repository not found');
   } else {
     return res.json(updatedRepo);
+    console.log(repositories);
   }
 });
 
@@ -93,8 +104,10 @@ app.delete('/repositories/:id', (req, res) => {
 
   if (!removedRepo) {
     return res.status(400).json({ error: 'Repository not found' });
+    console.warn('Repository not found');
   } else {
     return res.json();
+    console.log(repositories);
   }
 });
 
@@ -112,8 +125,10 @@ app.post('/repositories/:id/like', (req, res) => {
 
   if (!updatedRepo) {
     return res.status(400).json({ error: 'Repository not found' });
+    console.warn('Repository not found');
   } else {
     return res.json(updatedRepo);
+    console.log(repositories);
   }
 });
 
