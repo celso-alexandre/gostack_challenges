@@ -16,12 +16,11 @@ class CreateTransactionService {
 
   public execute({ title, value, type }: Request): Transaction {
     const transaction = this.transactionsRepository.create({
+      id: '0',
       title,
       value,
       type,
     });
-
-    console.log(transaction);
 
     return transaction;
   }

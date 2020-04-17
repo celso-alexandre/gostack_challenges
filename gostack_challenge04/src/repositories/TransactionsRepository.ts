@@ -19,7 +19,7 @@ class TransactionsRepository {
 
   public getBalance(): Balance {
     const balance = { income: 0, outcome: 0, total: 0 };
-    this.transactions.filter((transaction: Transaction) => {
+    this.transactions.filter((transaction: Transaction): null => {
       if (transaction.type === 'outcome') {
         balance.outcome += transaction.value;
         balance.total -= transaction.value;
@@ -27,6 +27,7 @@ class TransactionsRepository {
         balance.income += transaction.value;
         balance.total += transaction.value;
       }
+      return null;
     });
 
     return balance;
@@ -34,6 +35,14 @@ class TransactionsRepository {
 
   public create({ title, value, type }: Transaction): Transaction {
     const transaction = new Transaction({ title, value, type });
+
+    if (type === 'outcome') {
+      const { total } = this.getBalance();
+
+      if (value > total) {
+        throw Error('No sufficient funds');
+      }
+    }
 
     this.transactions.push(transaction);
 
