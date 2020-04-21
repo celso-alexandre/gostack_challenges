@@ -63,7 +63,7 @@ class CreateTransactionService {
       category_id: categoryId,
     });
 
-    transactionRepository.save(transaction);
+    await transactionRepository.save(transaction);
 
     return transaction;
   }

@@ -7,7 +7,7 @@ class DeleteTransactionService {
   public async execute(id: string): Promise<Transaction> {
     const transactionRepository = getRepository(Transaction);
     const transaction = await transactionRepository.findOne({
-      where: id,
+      where: { id },
     });
 
     if (!transaction) {
