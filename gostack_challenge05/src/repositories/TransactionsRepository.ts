@@ -41,8 +41,6 @@ class TransactionsRepository extends Repository<Transaction> {
       balance,
     };
 
-    console.log(`test ${allTransactionsAndBalance}`);
-
     return allTransactionsAndBalance;
   }
 }
