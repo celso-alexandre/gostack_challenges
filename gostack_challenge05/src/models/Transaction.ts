@@ -27,9 +27,14 @@ class Transaction {
   @Column()
   category_id: string;
 
-  @ManyToOne(() => Category)
-  @JoinColumn({ name: 'category_id' })
-  category: Category;
+  @ManyToOne(() => Category, (category: Category) => category.transactions, {
+    eager: true,
+  })
+  @JoinColumn({
+    name: 'category_id',
+    referencedColumnName: 'id',
+  })
+  public category: Category[];
 
   @CreateDateColumn()
   created_at: Date;

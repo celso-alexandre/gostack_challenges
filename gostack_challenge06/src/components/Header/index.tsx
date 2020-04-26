@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
-import { Container } from './styles';
+import { Container, LinkText } from './styles';
 
 import Logo from '../../assets/logo.svg';
 
@@ -15,9 +15,16 @@ const Header: React.FC<HeaderProps> = ({ size = 'large' }: HeaderProps) => (
     <header>
       <img src={Logo} alt="GoFinances" />
       <nav>
-        {
-          // Todo
-        }
+        <Link to="/">
+          <LinkText selectedThis={useLocation().pathname === '/'}>
+            Listagem
+          </LinkText>
+        </Link>
+        <Link to="/import">
+          <LinkText selectedThis={useLocation().pathname === '/import'}>
+            Importar
+          </LinkText>
+        </Link>
       </nav>
     </header>
   </Container>

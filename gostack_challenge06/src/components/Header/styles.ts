@@ -1,8 +1,19 @@
 import styled from 'styled-components';
 
+interface LinkTextProps {
+  selectedThis?: boolean;
+}
+
 interface ContainerProps {
   size?: 'small' | 'large';
 }
+
+export const LinkText = styled.p<LinkTextProps>`
+  display: inline;
+  border-bottom: 2px solid
+    ${({ selectedThis }) => (selectedThis ? '#ff872c' : '#5636d3')};
+  padding-bottom: 10px;
+`;
 
 export const Container = styled.div<ContainerProps>`
   background: #5636d3;
