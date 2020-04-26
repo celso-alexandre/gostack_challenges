@@ -30,7 +30,8 @@ import App from '../App';
 const apiMock = new MockAdapter(api);
 
 const wait = (amount = 0): Promise<void> => {
-  return new Promise((resolve) => setTimeout(resolve, amount));
+  // eslint-disable-next-line prettier/prettier
+  return new Promise(resolve => setTimeout(resolve, amount));
 };
 
 const actWait = async (amount = 0): Promise<void> => {
@@ -176,7 +177,7 @@ describe('Dashboard', () => {
     expect(getByText('Sell')).toBeTruthy();
 
     expect(getByText('Website Hosting')).toBeTruthy();
-    expect(getByText('- R$ 50,00')).toBeTruthy();
+    expect(getByText('-R$ 50,00')).toBeTruthy();
     expect(getByText('Hosting')).toBeTruthy();
   });
 
@@ -203,6 +204,7 @@ describe('Dashboard', () => {
 
     const file = new File(
       [
+        // eslint-disable-next-line no-multi-str
         'title, type, value, category\
         Loan, income, 1500, Others\
         Website Hosting, outcome, 50, Others\

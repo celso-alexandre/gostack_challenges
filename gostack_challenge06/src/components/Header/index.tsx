@@ -15,12 +15,26 @@ const Header: React.FC<HeaderProps> = ({ size = 'large' }: HeaderProps) => (
     <header>
       <img src={Logo} alt="GoFinances" />
       <nav>
-        <Link to="/">
+        <Link
+          to="/"
+          style={
+            useLocation().pathname === '/'
+              ? { pointerEvents: 'none' }
+              : undefined
+          }
+        >
           <LinkText selectedThis={useLocation().pathname === '/'}>
             Listagem
           </LinkText>
         </Link>
-        <Link to="/import">
+        <Link
+          to="/import"
+          style={
+            useLocation().pathname === '/import'
+              ? { pointerEvents: 'none' }
+              : undefined
+          }
+        >
           <LinkText selectedThis={useLocation().pathname === '/import'}>
             Importar
           </LinkText>
